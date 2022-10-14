@@ -4,8 +4,22 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+#registries:
+#  github-glfw:
+#    type: git
+#    url: https://github.com/glfw/glfw.git
+#    username: Weydon-Ding
+#    password: ${{secrets.MY_ARTIFACTORY_PASSWORD}}
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+
+  #- package-ecosystem: "gitsubmodule" # See documentation for possible values
+  #  directory: "/" # Location of package manifests
+  #  registries:
+  #    - github-glfw
+  #  schedule:
+  #    interval: "monthly"
