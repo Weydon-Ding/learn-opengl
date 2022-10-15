@@ -30,7 +30,7 @@ jobs:
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
-      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status 
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     name: Analyze
     runs-on: windows-latest
 
@@ -44,7 +44,7 @@ jobs:
           # When the `ssh-key` input is not provided, SSH URLs beginning with
           # `git@github.com:` are converted to HTTPS.
           #
-          # Default: false  
+          # Default: false
           submodules: 'recursive'
 
       - name: Configure CMake
@@ -59,7 +59,7 @@ jobs:
 
       - name: Test
         working-directory: ${{ env.build }}
-        # Execute tests defined by the CMake configuration.  
+        # Execute tests defined by the CMake configuration.
         # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
         run: ctest -C ${{env.BUILD_TYPE}}
 
@@ -73,10 +73,10 @@ jobs:
           ruleset: NativeRecommendedRules.ruleset
 
       # Upload SARIF file to GitHub Code Scanning Alerts
-      - name: Upload SARIF to GitHub
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ steps.run-analysis.outputs.sarif }}
+      # - name: Upload SARIF to GitHub
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #     sarif_file: ${{ steps.run-analysis.outputs.sarif }}
 
       # Upload SARIF file as an Artifact to download and view
       - name: Upload SARIF as an Artifact
