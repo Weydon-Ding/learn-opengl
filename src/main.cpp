@@ -1,9 +1,9 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "shader.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 #include <iostream>
 
-#include "shaders.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -47,7 +47,7 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("shader/shader.vs", "shader/shader.fs"); // you can name your shader files however you like
+    Shader ourShader("shader/shader.vert", "shader/shader.frag"); // you can name your shader files however you like
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
